@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VibeMart - E-Commerce Website</title>
+
+<style>
+
+/* ================= GENERAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f7f0e5;
+    color:#4d3b2b;
+}
+
+.page{
+    display:none;
+    min-height:400px;
+}
+
+.page.active{
+    display:block;
+}
+
+
+/* ================= NAVBAR ================= */
+
+nav{
+    background:#ead9c1;
+    border-top:1px solid #bda98e;
+    border-bottom:1px solid #bda98e;
+    text-align:center;
+    padding:15px 10px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#59412f;
+    margin-bottom:12px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+nav li{
+    font-size:12px;
+    cursor:pointer;
+    color:#4d3b2b;
+}
+
+nav li:hover{
+    text-decoration:underline;
+}
+
+
+/* ================= HOME ================= */
+
+.home{
+    text-align:center;
+    padding:30px 20px 28px;
+}
+
+.home h1{
+    font-size:26px;
+    color:#5c402c;
+    margin-bottom:12px;
+}
+
+.home h2{
+    font-size:16px;
+    color:#76553a;
+    margin-bottom:14px;
+}
+
+.home-description{
+    max-width:650px;
+    margin:auto;
+    font-size:12px;
+    line-height:1.7;
+    color:#594838;
+}
+
+
+/* SHOPPING BOX */
+
+.shopping-box{
+    width:288px;
+    height:170px;
+
+    margin:22px auto 16px;
+
+    background:#ead9c1;
+
+    border:1px solid #c7a987;
+
+    border-radius:6px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.shopping-icons{
+    width:220px;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:13px 20px;
+
+    margin-bottom:13px;
+}
+
+.shopping-icons span{
+    font-size:28px;
+}
+
+.shopping-text{
+    font-size:11px;
+    color:#634b37;
+}
+
+.start-btn{
+    background:#a97e55;
+    color:white;
+
+    border:none;
+
+    padding:9px 17px;
+
+    border-radius:3px;
+
+    font-size:12px;
+
+    cursor:pointer;
+}
+
+.start-btn:hover{
+    background:#8e6745;
+}
+
+
+/* ================= COMMON ================= */
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.page-title{
+    text-align:center;
+    color:#5c402c;
+    font-size:24px;
+    margin-bottom:25px;
+}
+
+
+/* ================= PRODUCTS ================= */
+
+.search{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.search input{
+    width:60%;
+    padding:10px;
+
+    border:1px solid #c9ae8e;
+
+    border-radius:4px;
+
+    background:white;
+
+    outline:none;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.product{
+    background:#fffaf4;
+
+    border:1px solid #dfccb2;
+
+    border-radius:6px;
+
+    padding:14px;
+
+    text-align:center;
+
+    box-shadow:0 2px 5px rgba(0,0,0,0.06);
+}
+
+.product-image{
+    height:105px;
+
+    background:#ead9c1;
+
+    border-radius:5px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:50px;
+
+    margin-bottom:12px;
+}
+
+.product h3{
+    font-size:14px;
+    color:#5b412d;
+    margin-bottom:8px;
+}
+
+.price{
+    font-size:14px;
+    font-weight:bold;
+    color:#946d49;
+    margin-bottom:12px;
+}
+
+.product button,
+.next-button button,
+.checkout-btn,
+.contact-btn,
+.success-box button{
+    background:#a97e55;
+    color:white;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:3px;
+
+    cursor:pointer;
+
+    font-size:12px;
+}
+
+.product button:hover,
+.next-button button:hover,
+.checkout-btn:hover,
+.contact-btn:hover,
+.success-box button:hover{
+    background:#8d6544;
+}
+
+.next-button{
+    text-align:right;
+    margin-top:22px;
+}
+
+
+/* ================= CART ================= */
+
+.cart-container{
+    max-width:750px;
+    margin:auto;
+}
+
+.cart-item{
+    background:#fffaf4;
+
+    border:1px solid #dfccb2;
+
+    border-radius:5px;
+
+    padding:13px;
+
+    margin-bottom:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.cart-name{
+    font-weight:bold;
+    color:#5c402c;
+    font-size:14px;
+}
+
+.cart-price{
+    font-size:12px;
+    margin-top:5px;
+}
+
+.remove-btn{
+    background:#b78d68;
+    color:white;
+    border:none;
+    padding:7px 10px;
+    border-radius:3px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.total{
+    text-align:right;
+    font-size:18px;
+    font-weight:bold;
+    margin-top:18px;
+    color:#5c402c;
+}
+
+
+/* ================= CHECKOUT ================= */
+
+.checkout-box{
+    max-width:650px;
+    margin:auto;
+
+    background:#fffaf4;
+
+    border:1px solid #dfccb2;
+
+    border-radius:6px;
+
+    padding:25px;
+
+    box-shadow:0 2px 5px rgba(0,0,0,0.05);
+}
+
+.checkout-box h2{
+    font-size:18px;
+    color:#5c402c;
+    margin-bottom:15px;
+}
+
+.summary{
+    background:#eee0cd;
+    padding:14px;
+    border-radius:4px;
+    margin-bottom:20px;
+}
+
+.summary p{
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.checkout-box label.form-label{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.checkout-box input[type="text"],
+.checkout-box textarea{
+    width:100%;
+
+    padding:9px;
+
+    border:1px solid #c9ae8e;
+
+    border-radius:4px;
+
+    margin-bottom:15px;
+
+    outline:none;
+
+    background:white;
+}
+
+.checkout-box textarea{
+    height:75px;
+    resize:none;
+}
+
+
+/* ================= PAYMENT ================= */
+
+.payment-title{
+    font-size:14px;
+    font-weight:bold;
+    color:#5c402c;
+    margin-bottom:10px;
+}
+
+.payment-option{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    border:1px solid #cfb99d;
+
+    background:#f7efe4;
+
+    padding:10px;
+
+    border-radius:4px;
+
+    margin-bottom:8px;
+
+    cursor:pointer;
+}
+
+.payment-option:hover{
+    background:#eee0cd;
+}
+
+.payment-option input{
+    width:16px;
+    height:16px;
+
+    accent-color:#a97e55;
+
+    cursor:pointer;
+}
+
+.payment-option label{
+    font-size:12px;
+    cursor:pointer;
+}
+
+.payment-icon{
+    font-size:19px;
+}
+
+
+/* ================= SUCCESS ================= */
+
+.success-box{
+    max-width:500px;
+
+    margin:45px auto;
+
+    background:#fffaf4;
+
+    border:1px solid #dfccb2;
+
+    border-radius:6px;
+
+    padding:35px;
+
+    text-align:center;
+}
+
+.success-box .icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.success-box h1{
+    font-size:23px;
+    color:#5c402c;
+    margin-bottom:10px;
+}
+
+.success-box p{
+    font-size:13px;
+    line-height:1.6;
+}
+
+.order-number{
+    margin:15px 0;
+    font-size:18px;
+    color:#936b47;
+}
+
+
+/* ================= TRACKING ================= */
+
+.track-box{
+    max-width:700px;
+    margin:auto;
+
+    background:#fffaf4;
+
+    border:1px solid #dfccb2;
+
+    border-radius:7px;
+
+    padding:25px;
+
+    box-shadow:0 2px 5px rgba(0,0,0,0.05);
+}
+
+.track-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#ead9c1;
+
+    padding:14px;
+
+    border-radius:5px;
+
+    margin-bottom:20px;
+}
+
+.track-header h3{
+    font-size:15px;
+    color:#5c402c;
+}
+
+.track-header span{
+    font-size:12px;
+    font-weight:bold;
+    color:#88603e;
+}
+
+.track-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-bottom:22px;
+}
+
+.info-box{
+    border:1px solid #dfccb2;
+    padding:12px;
+    border-radius:5px;
+    background:#faf4eb;
+}
+
+.info-box small{
+    display:block;
+    color:#8a7058;
+    font-size:10px;
+    margin-bottom:5px;
+}
+
+.info-box b{
+    font-size:13px;
+    color:#57402d;
+}
+
+.status-title{
+    font-size:14px;
+    font-weight:bold;
+    color:#5c402c;
+
+    margin-bottom:12px;
+}
+
+.status-row{
+    display:flex;
+    align-items:center;
+
+    padding:12px;
+
+    border-left:4px solid #a97e55;
+
+    background:#f4eadc;
+
+    margin-bottom:9px;
+
+    border-radius:3px;
+}
+
+.status-icon{
+    font-size:20px;
+    margin-right:12px;
+}
+
+.status-row div strong{
+    display:block;
+    font-size:12px;
+    color:#5c402c;
+}
+
+.status-row div span{
+    font-size:10px;
+    color:#806851;
+}
+
+.current-status{
+    margin-top:18px;
+
+    text-align:center;
+
+    background:#ead9c1;
+
+    padding:12px;
+
+    border-radius:4px;
+
+    font-size:12px;
+
+    color:#604832;
+}
+
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+    max-width:600px;
+
+    margin:auto;
+
+    background:#fffaf4;
+
+    border:1px solid #dfccb2;
+
+    border-radius:6px;
+
+    padding:25px;
+}
+
+.contact-box label{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.contact-box input,
+.contact-box textarea{
+    width:100%;
+
+    padding:10px;
+
+    border:1px solid #c9ae8e;
+
+    border-radius:4px;
+
+    margin-bottom:15px;
+
+    outline:none;
+}
+
+.contact-box textarea{
+    height:100px;
+    resize:none;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#ead9c1;
+
+    border-top:1px solid #bda98e;
+
+    text-align:center;
+
+    padding:14px;
+
+    font-size:11px;
+
+    color:#5d4735;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:550px){
+
+    nav ul{
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .search input{
+        width:90%;
+    }
+
+    .track-info{
+        grid-template-columns:1fr;
+    }
+
+    .track-header{
+        flex-direction:column;
+        gap:8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <div class="logo">
+        VibeMart
+    </div>
+
+    <ul>
+
+        <li onclick="showPage('home')">
+            Home
+        </li>
+
+        <li onclick="showPage('products')">
+            Products
+        </li>
+
+        <li onclick="showPage('cart')">
+            Cart (<span id="cartCount">0</span>)
+        </li>
+
+        <li onclick="showPage('checkout')">
+            Checkout
+        </li>
+
+        <li onclick="showPage('contact')">
+            Contact
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- ================= HOME PAGE ================= -->
+
+<section id="home" class="page active">
+
+    <div class="home">
+
+        <h1>
+            Welcome to VibeMart
+        </h1>
+
+        <h2>
+            Your Simple and Easy Online Shopping Website
+        </h2>
+
+        <p class="home-description">
+            Shop quality products at affordable prices.
+            Browse, add to cart, and order with ease.
+        </p>
+
+
+        <div class="shopping-box">
+
+            <div class="shopping-icons">
+
+                <span>🛍️</span>
+                <span>🛒</span>
+                <span>📦</span>
+                <span>📱</span>
+                <span>💻</span>
+                <span>👗</span>
+                <span>⌚</span>
+
+            </div>
+
+            <div class="shopping-text">
+
+                Shop Smart • Shop Easy • Shop with VibeMart
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="start-btn"
+            onclick="showPage('products')">
+
+            Start Shopping
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS PAGE ================= -->
+
+<section id="products" class="page">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Our Products
+        </h1>
+
+
+        <div class="search">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+                onkeyup="searchProducts()">
+
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    📱
+                </div>
+
+                <h3>
+                    Smart Phone
+                </h3>
+
+                <div class="price">
+                    ₹15,000
+                </div>
+
+                <button
+                    onclick="addToCart('Smart Phone',15000)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    💻
+                </div>
+
+                <h3>
+                    Laptop
+                </h3>
+
+                <div class="price">
+                    ₹45,000
+                </div>
+
+                <button
+                    onclick="addToCart('Laptop',45000)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    👗
+                </div>
+
+                <h3>
+                    Women's Dress
+                </h3>
+
+                <div class="price">
+                    ₹1,999
+                </div>
+
+                <button
+                    onclick="addToCart('Womens Dress',1999)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    ⌚
+                </div>
+
+                <h3>
+                    Smart Watch
+                </h3>
+
+                <div class="price">
+                    ₹2,999
+                </div>
+
+                <button
+                    onclick="addToCart('Smart Watch',2999)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    👟
+                </div>
+
+                <h3>
+                    Sports Shoes
+                </h3>
+
+                <div class="price">
+                    ₹2,499
+                </div>
+
+                <button
+                    onclick="addToCart('Sports Shoes',2499)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🎒
+                </div>
+
+                <h3>
+                    Travel Backpack
+                </h3>
+
+                <div class="price">
+                    ₹1,799
+                </div>
+
+                <button
+                    onclick="addToCart('Travel Backpack',1799)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 7 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🕶️
+                </div>
+
+                <h3>
+                    Stylish Sunglasses
+                </h3>
+
+                <div class="price">
+                    ₹999
+                </div>
+
+                <button
+                    onclick="addToCart('Stylish Sunglasses',999)">
+
+                    Add to Cart
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="next-button">
+
+            <button onclick="goToCart()">
+                Next → Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CART PAGE ================= -->
+
+<section id="cart" class="page">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Shopping Cart
+        </h1>
+
+
+        <div class="cart-container">
+
+            <div id="cartItems"></div>
+
+            <div class="total">
+
+                Total:
+                ₹<span id="cartTotal">0</span>
+
+            </div>
+
+
+            <div class="next-button">
+
+                <button onclick="goToCheckout()">
+                    Next → Checkout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CHECKOUT PAGE ================= -->
+
+<section id="checkout" class="page">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Checkout
+        </h1>
+
+
+        <div class="checkout-box">
+
+            <h2>
+                Order Summary
+            </h2>
+
+
+            <div
+                class="summary"
+                id="checkoutItems">
+            </div>
+
+
+            <h3 style="font-size:15px; margin-bottom:18px;">
+
+                Total Amount:
+                ₹<span id="checkoutTotal">0</span>
+
+            </h3>
+
+
+            <label class="form-label">
+                Customer Name
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name">
+
+
+            <label class="form-label">
+                Mobile Number
+            </label>
+
+            <input
+                type="text"
+                id="mobile"
+                placeholder="Enter your 10 digit mobile number">
+
+
+            <label class="form-label">
+                Delivery Address
+            </label>
+
+            <textarea
+                id="address"
+                placeholder="Enter your delivery address">
+            </textarea>
+
+
+            <!-- PAYMENT METHOD -->
+
+            <div class="payment-title">
+                Payment Method
+            </div>
+
+
+            <div class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    id="upi"
+                    value="UPI">
+
+                <span class="payment-icon">
+                    💳
+                </span>
+
+                <label for="upi">
+                    UPI
+                </label>
+
+            </div>
+
+
+            <div class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    id="cod"
+                    value="Cash on Delivery">
+
+                <span class="payment-icon">
+                    💵
+                </span>
+
+                <label for="cod">
+                    Cash on Delivery
+                </label>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="placeOrder()">
+
+                Place Order
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SUCCESS PAGE ================= -->
+
+<section id="success" class="page">
+
+    <div class="container">
+
+        <div class="success-box">
+
+            <div class="icon">
+                ✅
+            </div>
+
+            <h1>
+                Order Placed Successfully!
+            </h1>
+
+            <p>
+                Thank you for shopping with VibeMart.
+            </p>
+
+            <div class="order-number">
+
+                Order ID:
+                <b id="orderID"></b>
+
+            </div>
+
+
+            <button onclick="showPage('tracking')">
+
+                Track My Order
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TRACKING PAGE ================= -->
+
+<section id="tracking" class="page">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Order Tracking
+        </h1>
+
+
+        <div class="track-box">
+
+
+            <div class="track-header">
+
+                <h3>
+                    VibeMart Order
+                </h3>
+
+                <span>
+                    Order Confirmed
+                </span>
+
+            </div>
+
+
+            <div class="track-info">
+
+
+                <div class="info-box">
+
+                    <small>
+                        Order ID
+                    </small>
+
+                    <b id="trackOrderID">
+                        -
+                    </b>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        Product
+                    </small>
+
+                    <b id="trackProduct">
+                        -
+                    </b>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        Total Amount
+                    </small>
+
+                    <b>
+                        ₹<span id="trackPrice">0</span>
+                    </b>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        Payment
+                    </small>
+
+                    <b id="trackPayment">
+                        -
+                    </b>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-title">
+                Delivery Updates
+            </div>
+
+
+            <div class="status-row">
+
+                <div class="status-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Order Confirmed
+                    </strong>
+
+                    <span>
+                        Your order has been received successfully.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-row">
+
+                <div class="status-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <strong>
+                        Order Processing
+                    </strong>
+
+                    <span>
+                        Your product is being packed.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-row">
+
+                <div class="status-icon">
+                    🚚
+                </div>
+
+                <div>
+
+                    <strong>
+                        Ready for Shipment
+                    </strong>
+
+                    <span>
+                        Your order is ready to be dispatched.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-row">
+
+                <div class="status-icon">
+                    🏠
+                </div>
+
+                <div>
+
+                    <strong>
+                        Delivery
+                    </strong>
+
+                    <span>
+                        Your product will be delivered to the given address.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="current-status">
+
+                <b>
+                    Current Status:
+                </b>
+
+                Your order is currently being processed.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONTACT PAGE ================= -->
+
+<section id="contact" class="page">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Contact Us
+        </h1>
+
+
+        <div class="contact-box">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email">
+
+
+            <label>
+                Message
+            </label>
+
+            <textarea
+                id="message"
+                placeholder="Enter your message">
+            </textarea>
+
+
+            <button
+                class="contact-btn"
+                onclick="sendMessage()">
+
+                Send Message
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 VibeMart - E-Commerce Website
+
+</footer>
+
+
+
+<script>
+
+/* ================= VARIABLES ================= */
+
+let cart = [];
+
+let currentOrderID = "";
+
+let selectedPayment = "";
+
+
+/* ================= PAGE NAVIGATION ================= */
+
+function showPage(pageId){
+
+    let pages =
+        document.querySelectorAll(".page");
+
+
+    pages.forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+
+
+    if(pageId === "cart"){
+
+        displayCart();
+
+    }
+
+
+    if(pageId === "checkout"){
+
+        displayCheckout();
+
+    }
+
+}
+
+
+/* ================= ADD TO CART ================= */
+
+function addToCart(name, price){
+
+    cart.push({
+
+        name:name,
+        price:price
+
+    });
+
+
+    updateCartCount();
+
+    alert(
+        name + " added to cart."
+    );
+
+}
+
+
+/* ================= CART COUNT ================= */
+
+function updateCartCount(){
+
+    document
+        .getElementById("cartCount")
+        .innerText = cart.length;
+
+}
+
+
+/* ================= GO TO CART ================= */
+
+function goToCart(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Please select a product first."
+        );
+
+        return;
+
+    }
+
+    showPage("cart");
+
+}
+
+
+/* ================= DISPLAY CART ================= */
+
+function displayCart(){
+
+    let cartItems =
+        document.getElementById("cartItems");
+
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML =
+        "<p style='text-align:center;'>Your cart is empty.</p>";
+
+        document
+            .getElementById("cartTotal")
+            .innerText = "0";
+
+        return;
+
+    }
+
+
+    cart.forEach(function(item,index){
+
+        total += item.price;
+
+
+        let div =
+            document.createElement("div");
+
+
+        div.className =
+            "cart-item";
+
+
+        div.innerHTML = `
+
+            <div>
+
+                <div class="cart-name">
+                    ${item.name}
+                </div>
+
+                <div class="cart-price">
+                    ₹${item.price}
+                </div>
+
+            </div>
+
+            <button
+                class="remove-btn"
+                onclick="removeItem(${index})">
+
+                Remove
+
+            </button>
+
+        `;
+
+
+        cartItems.appendChild(div);
+
+    });
+
+
+    document
+        .getElementById("cartTotal")
+        .innerText = total;
+
+}
+
+
+/* ================= REMOVE PRODUCT ================= */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCartCount();
+
+    displayCart();
+
+}
+
+
+/* ================= GO TO CHECKOUT ================= */
+
+function goToCheckout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Please select a product first."
+        );
+
+        return;
+
+    }
+
+    showPage("checkout");
+
+}
+
+
+/* ================= CHECKOUT DISPLAY ================= */
+
+function displayCheckout(){
+
+    let checkoutItems =
+        document.getElementById("checkoutItems");
+
+
+    checkoutItems.innerHTML = "";
+
+    let total = 0;
+
+
+    cart.forEach(function(item){
+
+        total += item.price;
+
+
+        checkoutItems.innerHTML += `
+
+            <p>
+                ${item.name}
+                - ₹${item.price}
+            </p>
+
+        `;
+
+    });
+
+
+    document
+        .getElementById("checkoutTotal")
+        .innerText = total;
+
+}
+
+
+/* ================= PLACE ORDER ================= */
+
+function placeOrder(){
+
+    let name =
+        document
+        .getElementById("customerName")
+        .value
+        .trim();
+
+
+    let mobile =
+        document
+        .getElementById("mobile")
+        .value
+        .trim();
+
+
+    let address =
+        document
+        .getElementById("address")
+        .value
+        .trim();
+
+
+    let payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+
+    if(name === ""){
+
+        alert(
+            "Please enter your name."
+        );
+
+        return;
+
+    }
+
+
+    if(mobile === ""){
+
+        alert(
+            "Please enter your mobile number."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        mobile.length !== 10 ||
+        isNaN(mobile)
+    ){
+
+        alert(
+            "Please enter a valid 10 digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+    if(address === ""){
+
+        alert(
+            "Please enter your delivery address."
+        );
+
+        return;
+
+    }
+
+
+    if(!payment){
+
+        alert(
+            "Please select a payment method."
+        );
+
+        return;
+
+    }
+
+
+    selectedPayment =
+        payment.value;
+
+
+    currentOrderID =
+        "VM" +
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+
+    document
+        .getElementById("orderID")
+        .innerText =
+        currentOrderID;
+
+
+    document
+        .getElementById("trackOrderID")
+        .innerText =
+        currentOrderID;
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item){
+
+        total += item.price;
+
+    });
+
+
+    document
+        .getElementById("trackPrice")
+        .innerText =
+        total;
+
+
+    document
+        .getElementById("trackPayment")
+        .innerText =
+        selectedPayment;
+
+
+    if(cart.length > 0){
+
+        document
+            .getElementById("trackProduct")
+            .innerText =
+            cart[0].name;
+
+    }
+
+
+    showPage("success");
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchProducts(){
+
+    let input =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    let products =
+        document.querySelectorAll(".product");
+
+
+    products.forEach(function(product){
+
+        let name =
+            product
+            .querySelector("h3")
+            .innerText
+            .toLowerCase();
+
+
+        if(name.includes(input)){
+
+            product.style.display =
+                "block";
+
+        }
+
+        else{
+
+            product.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+
+/* ================= CONTACT ================= */
+
+function sendMessage(){
+
+    let email =
+        document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+    let message =
+        document
+        .getElementById("message")
+        .value
+        .trim();
+
+
+    if(email === ""){
+
+        alert(
+            "Please enter your email."
+        );
+
+        return;
+
+    }
+
+
+    if(message === ""){
+
+        alert(
+            "Please enter your message."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Your message has been sent successfully."
+    );
+
+
+    document
+        .getElementById("email")
+        .value = "";
+
+
+    document
+        .getElementById("message")
+        .value = "";
+
+}
+
+</script>
+
+</body>
+
+</html>
